@@ -1,0 +1,41 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jianen.mapper.mapper">
+    <insert id="insertbill">
+        insert into  bill values (null  ,#{billId} , #{menuId} , #{money} ,#{diningTableId} ,#{billDate},#{state} ,#{nums} )
+    </insert>
+
+    <update id="updateDining">
+        update diningTable set  state=#{state} ,orderName=#{orderName}, orderTel=#{orderTel} where id=#{id}
+    </update>
+    <update id="updateDiningByid">
+        update diningTable set  state=#{state}  where id=#{id}
+    </update>
+    <update id="updatebill">
+        update bill set  state=#{state}  where id=#{id}
+    </update>
+
+
+    <select id="select" resultType="java.lang.Object">
+        select * from tb_user where username=#{username} and password=#{password}
+    </select>
+    <select id="selectDining" resultType="com.jianen.model.DiningTable">
+        select * from diningTable
+    </select>
+
+    <select id="selectDiningByid" resultType="com.jianen.model.DiningTable">
+        select * from diningTable where id=#{id}
+    </select>
+    <select id="selectmenu" resultType="com.jianen.model.menu">
+        select * from menu
+    </select>
+    <select id="selectMenuByid" resultType="com.jianen.model.menu">
+        select * from menu where id=#{id}
+    </select>
+    <select id="selectbill" resultType="com.jianen.model.bill">
+        select * from bill where diningTableId=#{diningTableId} and state=#{state}
+    </select>
+
+
+</mapper>
